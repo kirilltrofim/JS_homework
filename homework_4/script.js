@@ -54,8 +54,6 @@ let appData = {
     },
 
 
-
-
     detectLevel: function () {
         if (appData.moneyPerDay < 100) {
             console.log("MIN");
@@ -66,6 +64,7 @@ let appData = {
         } else console.log("ERROR");
     },
 
+
     chooseOptExpenses: function () {
         for (let i = 0; i < 3; i++) {
             let questionOptExpenses = prompt("Статья необязательных расходов?");
@@ -74,9 +73,10 @@ let appData = {
         }
     },
 
-
-    detectDayBudget: function () {
-        appData.moneyPerDay = appData.budget / 30;
-        alert("Бюджет на 1 день: " + appData.moneyPerDay + "руб.");
+    chooseIncome: function(){
+        let items = prompt("Что принесет дополнительный доход? (Перечислете через запятую)","");
+        appData.income = items.split(', ');
+        appData.income.push(prompt('Может что-то еще?'));
+        appData.income.sort();
     }
-};
+};      // сделать дз
