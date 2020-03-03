@@ -16,3 +16,5 @@ for (let i = 0; i < 2; i++) {
     appData.expenses[a] = b;
 }
 alert("Бюджет на 1 день " + money / 30);
+
+console.log([]+false-null+true)
