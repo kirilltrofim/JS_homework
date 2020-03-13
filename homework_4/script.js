@@ -48,13 +48,13 @@ let appData = {
     },
 
 
-    detectDayBudget: function () {
+    detectDayBudget: function () {                                          // Расчет дневног бюджета
         appData.moneyPerDay = (appData.budget / 30).toFixed();
         alert("Бюджет на 1 день: " + appData.moneyPerDay + "руб.");
     },
 
 
-    detectLevel: function () {
+    detectLevel: function () {                                             // Расчет уровня достатка
         if (appData.moneyPerDay < 100) {
             console.log("MIN");
         } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
@@ -65,7 +65,7 @@ let appData = {
     },
 
 
-    chooseOptExpenses: function () {
+    chooseOptExpenses: function () {                                       // Функция для определения не обязательных расходов
         for (let i = 0; i < 3; i++) {
             let questionOptExpenses = prompt("Статья необязательных расходов?");
             appData.optionalExpenses[i] = questionOptExpenses;
@@ -75,8 +75,19 @@ let appData = {
 
     chooseIncome: function(){
         let items = prompt("Что принесет дополнительный доход? (Перечислете через запятую)","");
-        appData.income = items.split(', ');
-        appData.income.push(prompt('Может что-то еще?'));
-        appData.income.sort();
-    }
-};      // сделать дз
+        if (typeof(items) != "string" || items == "" || typeof(items) == null) 
+            console.log("Вы ввели не верные данные")
+                else {
+                    appData.income = items.split(', ');
+                    appData.income.push(prompt('Может что-то еще?'));
+                    appData.income.sort();
+                }
+        appData.income.forEach (function (itemmassive, i) {
+              alert("Способы доп. заработка: " + (i+1) + " - " + itemmassive);
+        });
+    }  
+};  
+    
+for (let key in appData) {
+    console.log("Наша программа включает в себя данные: " + key + " - " + appData[key]);
+}
